@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Lands.Views.LoginPage"
-             BindingContext="{Binding main, Source={StaticResource Locator}}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Lands">
     <ContentPage.Content>
         <ScrollView
@@ -35,7 +35,8 @@
                 <Label
                     Grid.Row="1"    
                     Grid.Column="0"
-                    Text="Password">
+                    Text="Password"
+                    VerticalOptions="Center">
                 </Label>
                 <Entry
                     Grid.Row="1"    
@@ -45,6 +46,10 @@
                     Placeholder="Enter your password...">
                 </Entry>
                 </Grid>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
                 <StackLayout
                     VerticalOptions="CenterAndExpand"
                     Margin="10,0"
@@ -57,22 +62,14 @@
                     <Switch
                         IsToggled="{Binding IsRemembered, Mode=TwoWay}"
                         HorizontalOptions="End">
-
                     </Switch>
                 </StackLayout>
                 <Label
                     HorizontalOptions="Center"
                     Text="Forgot your password?"
                     TextColor="Blue"
-                    VerticalOptions="CenterAndExpand">
-                    
-                </Label>    
-                <ActivityIndicator
-                    IsRunning="{Binding isRunning, Mode=TwoWay}"
-                    VerticalOptions="CenterAndExpand">
-
-                </ActivityIndicator>
-
+                    VerticalOptions="CenterAndExpand">                    
+                </Label>
                 <StackLayout
                     Orientation="Horizontal"
                     Margin="40,0"
@@ -83,22 +80,24 @@
                         Command="{Binding LoginCommand}"
                         HeightRequest="46"
                         HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnable, Mode=TwoWay}"
                         Text="Login" 
                         TextColor="White">
                     </Button>
                     <Button
-                        BackgroundColor="OrangeRed"
+                        BackgroundColor="Purple"
                         BorderRadius="23"
-                        Command="{Binding RegisterCommand}"
                         HeightRequest="46"
                         HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnable, Mode=TwoWay}"
                         Text="Register" 
                         TextColor="White">
                     </Button>
                 </StackLayout>
                 <StackLayout
                     HorizontalOptions="Center"
-                    Orientation="Horizontal" VerticalOptions="EndAndExpand">
+                    Orientation="Horizontal" 
+                    VerticalOptions="EndAndExpand">
                     <Image
                         Source="facebook_logo"
                         WidthRequest="100">
